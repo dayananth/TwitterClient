@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TweetsViewController.h"
 #import "TwitterClient.h"
 #import "User.h"
 #import "Tweet.h"
@@ -22,7 +23,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[LoginViewController alloc] init];
+    User *user = [User currentUser];
+    if(user != nil){
+        NSLog(@"Welcome User:%@", user.name);
+        self.window.rootViewController = [[TweetsViewController alloc] init];
+        
+    }else{
+        NSLog(@"User is logged out");
+        self.window.rootViewController = [[LoginViewController alloc] init];
+    }
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

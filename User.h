@@ -17,4 +17,8 @@
 @property (nonatomic, strong) NSString *profileImageUrl;
 @property (nonatomic, strong) NSString *tagLine;
 
++ (User *)currentUser;
++ (void)setCurrentUser: (User *) user;
++ (void) logout;
+
 @end

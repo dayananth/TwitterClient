@@ -1,24 +1,30 @@
 //
-//  LoginViewController.m
+//  TweetsViewController.m
 //  TwitterClient
 //
-//  Created by Ramasamy Dayanand on 11/4/15.
+//  Created by Ramasamy Dayanand on 11/6/15.
 //  Copyright © 2015 Dayanand Ramasamy. All rights reserved.
 //
 
-#import "LoginViewController.h"
 #import "TweetsViewController.h"
+#import "User.h"
 #import "TwitterClient.h"
+#import "Tweet.h"
 
-@interface LoginViewController ()
-- (IBAction)onLogin:(id)sender;
+@interface TweetsViewController ()
 
+- (IBAction)OnLogout:(id)sender;
 @end
 
-@implementation LoginViewController
+@implementation TweetsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[TwitterClient sharedInstance] homeTimeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+        for(Tweet *tweet in tweets){
+            NSLog(@"tweet text: %@", tweet.text);
+        }
+    }];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -37,18 +43,7 @@
 }
 */
 
-- (IBAction)onLogin:(id)sender {
-    
-    [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
-        if(user != nil){
-            // present tweets view
-            NSLog(@"Welcome to Twaya client: %@", user.name);
-            [self presentViewController:[[TweetsViewController alloc] init] animated:YES completion:nil];
-        }else{
-            // present error view
-            
-        }
-    }];
-
+- (IBAction)OnLogout:(id)sender {
+    [User logout];
 }
 @end

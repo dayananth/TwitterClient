@@ -24,9 +24,15 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     User *user = [User currentUser];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogout) name:UserDidLogoutNotification object:nil];
+    
     if(user != nil){
         NSLog(@"Welcome User:%@", user.name);
-        self.window.rootViewController = [[TweetsViewController alloc] init];
+        TweetsViewController *twc = [[TweetsViewController alloc] init];
+        UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:twc];
+
+        self.window.rootViewController =  nvc;
         
     }else{
         NSLog(@"User is logged out");
@@ -64,6 +70,11 @@
     [[TwitterClient sharedInstance] openURL: url];
 
      return YES;
+}
+
+
+-(void) userDidLogout{
+    self.window.rootViewController = [[LoginViewController alloc] init];
 }
 
 @end

@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +44,9 @@
         if(user != nil){
             // present tweets view
             NSLog(@"Welcome to Twaya client: %@", user.name);
-            [self presentViewController:[[TweetsViewController alloc] init] animated:YES completion:nil];
+            TweetsViewController *twc = [[TweetsViewController alloc] init];
+            UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:twc];
+            [self presentViewController:nvc animated:YES completion:nil];
         }else{
             // present error view
             

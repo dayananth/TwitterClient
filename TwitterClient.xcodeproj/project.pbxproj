@@ -22,6 +22,8 @@
 		0CF46FC61BEF1EF1007B0527 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CF46FC41BEF1EF1007B0527 /* TweetCell.xib */; settings = {ASSET_TAGS = (); }; };
 		0CF46FCA1BF0202C007B0527 /* TweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF46FC81BF0202C007B0527 /* TweetDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0CF46FCB1BF0202C007B0527 /* TweetDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CF46FC91BF0202C007B0527 /* TweetDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		0CF46FCF1BF05E44007B0527 /* MessageComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF46FCD1BF05E44007B0527 /* MessageComposeController.m */; settings = {ASSET_TAGS = (); }; };
+		0CF46FD01BF05E44007B0527 /* MessageComposeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CF46FCE1BF05E44007B0527 /* MessageComposeController.xib */; settings = {ASSET_TAGS = (); }; };
 		7129E9C6FFD3BEC5CD1F2DAB /* libPods-TwitterClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 269BF711DBD97C16EB7B2020 /* libPods-TwitterClient.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,9 @@
 		0CF46FC71BF0202C007B0527 /* TweetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetDetailViewController.h; sourceTree = "<group>"; };
 		0CF46FC81BF0202C007B0527 /* TweetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetDetailViewController.m; sourceTree = "<group>"; };
 		0CF46FC91BF0202C007B0527 /* TweetDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetDetailViewController.xib; sourceTree = "<group>"; };
+		0CF46FCC1BF05E44007B0527 /* MessageComposeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageComposeController.h; sourceTree = "<group>"; };
+		0CF46FCD1BF05E44007B0527 /* MessageComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageComposeController.m; sourceTree = "<group>"; };
+		0CF46FCE1BF05E44007B0527 /* MessageComposeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageComposeController.xib; sourceTree = "<group>"; };
 		210A2BB1716655538DD3303C /* Pods-TwitterClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClient/Pods-TwitterClient.debug.xcconfig"; sourceTree = "<group>"; };
 		269BF711DBD97C16EB7B2020 /* libPods-TwitterClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwitterClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9727B3EE2ADCBD23AFE7E394 /* Pods-TwitterClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClient/Pods-TwitterClient.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +121,9 @@
 			children = (
 				0CF46FBE1BEDDCFD007B0527 /* TweetsViewController.h */,
 				0CF46FBF1BEDDCFD007B0527 /* TweetsViewController.m */,
+				0CF46FCC1BF05E44007B0527 /* MessageComposeController.h */,
+				0CF46FCD1BF05E44007B0527 /* MessageComposeController.m */,
+				0CF46FCE1BF05E44007B0527 /* MessageComposeController.xib */,
 				0CF46FC71BF0202C007B0527 /* TweetDetailViewController.h */,
 				0CF46FC81BF0202C007B0527 /* TweetDetailViewController.m */,
 				0CF46FC91BF0202C007B0527 /* TweetDetailViewController.xib */,
@@ -238,6 +246,7 @@
 				0CF46FCB1BF0202C007B0527 /* TweetDetailViewController.xib in Resources */,
 				0CF46FC61BEF1EF1007B0527 /* TweetCell.xib in Resources */,
 				0CF46F6D1BEB2B8C007B0527 /* LaunchScreen.storyboard in Resources */,
+				0CF46FD01BF05E44007B0527 /* MessageComposeController.xib in Resources */,
 				0CF46F6A1BEB2B8C007B0527 /* Assets.xcassets in Resources */,
 				0CF46F791BEB2D31007B0527 /* LoginViewController.xib in Resources */,
 			);
@@ -300,6 +309,7 @@
 			files = (
 				0CF46F811BEB2EF2007B0527 /* TwitterClient.m in Sources */,
 				0CF46F621BEB2B8C007B0527 /* AppDelegate.m in Sources */,
+				0CF46FCF1BF05E44007B0527 /* MessageComposeController.m in Sources */,
 				0CF46FB81BEC8899007B0527 /* User.m in Sources */,
 				0CF46FB51BEC8881007B0527 /* Tweet.m in Sources */,
 				0CF46F5F1BEB2B8C007B0527 /* main.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "TweetsViewController.h"
 #import "TweetDetailViewController.h"
+#import "MessageComposeController.h"
 #import "User.h"
 #import "TwitterClient.h"
 #import "Tweet.h"
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *TweetTableView;
 @property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property BOOL isComposeShown;
 @end
 
 @implementation TweetsViewController
@@ -27,6 +29,7 @@
     
     
     self.title = @"Home";
+    self.isComposeShown = false;
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:80.0/255.0 green: 80.0/255.0 blue:180.0/255.0 alpha: 1.0]];
     [self.navigationController.navigationBar
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
@@ -52,12 +55,13 @@
 
     
     UIButton *rbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rbutton.userInteractionEnabled = YES;
     rbutton.frame = CGRectMake(10, 0, 100, 30);
     rbutton.layer.cornerRadius = 15.0;
     rbutton.layer.borderColor = [UIColor whiteColor].CGColor;
     rbutton.layer.borderWidth = 1.0f;
-    [rbutton setTitle:@"New" forState:UIControlStateNormal];
-//    [rbutton addTarget:self action:@selector(onLogout) forControlEvents:UIControlEventAllEvents];
+    [rbutton setTitle:@"Compose" forState:UIControlStateNormal];
+    [rbutton addTarget:self action:@selector(onCompose:) forControlEvents:UIControlEventAllEvents];
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:rbutton];
     [rightButton setTitleTextAttributes:
@@ -104,6 +108,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    self.isComposeShown = false;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -114,6 +122,16 @@
 }
 */
 
+
+-(IBAction)onCompose:(id)sender {
+    if(!self.isComposeShown){
+        UIButton *button = (UIButton*)sender;
+//        button.userInteractionEnabled = NO;
+        MessageComposeController *mcc = [[MessageComposeController alloc] init];
+        [self.navigationController pushViewController:mcc animated:YES];
+        self.isComposeShown = true;
+    }
+}
 
 -(void)onLogout{
     [User logout];
@@ -132,9 +150,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Tweet *tweet = self.tweets[indexPath.row];
     TweetDetailViewController *tvc = [[TweetDetailViewController alloc] initWithTweet:tweet];
     [self.navigationController pushViewController:tvc animated:YES];
 }
+
+
 
 @end

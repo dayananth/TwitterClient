@@ -14,4 +14,5 @@
 
 -(id) initWithTweet: (Tweet *) tweet;
 
+- (IBAction)onRetweet:(id)sender;
 @end

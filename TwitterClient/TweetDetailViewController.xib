@@ -40,7 +40,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reply" translatesAutoresizingMaskIntoConstraints="NO" id="qDM-EC-8FQ">
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reply" translatesAutoresizingMaskIntoConstraints="NO" id="qDM-EC-8FQ">
                     <rect key="frame" x="8" y="147" width="30" height="20"/>
                     <animations/>
                     <constraints>
@@ -51,6 +51,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Retweet" translatesAutoresizingMaskIntoConstraints="NO" id="e2D-5h-jkx">
                     <rect key="frame" x="119" y="147" width="37" height="20"/>
                     <animations/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" constant="37" id="kf5-Dm-7uQ"/>
                     </constraints>
@@ -72,6 +73,7 @@
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="e2D-5h-jkx" firstAttribute="centerY" secondItem="qDM-EC-8FQ" secondAttribute="centerY" id="8Mf-e3-4EA"/>
                 <constraint firstItem="e2D-5h-jkx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dox-fi-2RE" secondAttribute="bottom" constant="8" id="8qL-Cs-EFq"/>
@@ -95,8 +97,16 @@
                 <constraint firstItem="qDM-EC-8FQ" firstAttribute="leading" secondItem="I8o-lb-q44" secondAttribute="leading" id="vWF-jO-6Xc"/>
                 <constraint firstItem="Ypa-ZF-qBg" firstAttribute="centerY" secondItem="qDM-EC-8FQ" secondAttribute="centerY" id="yIj-4b-VpL"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="iwk-qS-TBu" appends="YES" id="w9z-ls-VAf"/>
+            </connections>
             <point key="canvasLocation" x="241" y="202"/>
         </view>
+        <tapGestureRecognizer id="iwk-qS-TBu">
+            <connections>
+                <action selector="onRetweet:" destination="-1" id="Kle-Kz-arz"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Like" width="20" height="20"/>

@@ -94,6 +94,42 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
+-(void) sendTweet: (NSDictionary *) params completion:(void (^) (Tweet *tweet, NSError *error)) completion {
+    
+    [self POST:@"1.1/statuses/update.json" parameters:params constructingBodyWithBlock:NULL success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+-(void) retweet: (long) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion {
+    NSString *tweetIDString = [NSString stringWithFormat:@"%ld.json",tweetID];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    dictionary[@"id"] = tweetIDString;
+    
+    
+    [self POST:[NSString stringWithFormat:@"1.1/statuses/retweet/%ld.json",tweetID] parameters:dictionary constructingBodyWithBlock:NULL success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+-(void) favourite: (long) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion {
+    NSString *tweetIDString = [NSString stringWithFormat:@"%ld.json",tweetID];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    dictionary[@"id"] = tweetIDString;
+
+    [self POST:[NSString stringWithFormat:@"1.1/favorites/create.json",tweetID] parameters:dictionary constructingBodyWithBlock:NULL success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "TweetDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "TwitterClient.h"
 
 @interface TweetDetailViewController ()
 
@@ -26,6 +27,25 @@
     }
     return self;
 }
+
+- (IBAction)onRetweet:(id)sender {
+    [[TwitterClient sharedInstance] retweet:self.tweet.twetID completion:^(Tweet *tweet, NSError *error) {
+        if(tweet != nil){
+            NSLog(@"successfully retweeted");
+        }else{
+            NSLog(@"failed to retweet");
+        }
+    }];
+}
+
+
+- (IBAction)onReply:(id)sender {
+
+}
+
+//- (IBAction)onRetweet:(id)sender {
+//
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,5 +91,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

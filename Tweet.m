@@ -14,6 +14,7 @@
     
     self = [self init];
     if(self){
+        self.twetID = dictionary[@"id"];
         self.text = dictionary[@"text"];
         self.user = [[User  alloc] initWithDictionary:dictionary[@"user"]];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

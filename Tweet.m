@@ -19,6 +19,10 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
         self.createdAt = [dateFormatter dateFromString:dictionary[@"created_at"]];
+        dateFormatter.dateFormat = @"yyyy-MM-dd hh:mm a";
+        self.formattedDate = [dateFormatter stringFromDate:self.createdAt];
+//        NSDate *date1 = [NSDate date];
+//        NSLog(@"%@f is the time difference ", [date1 timeIntervalSinceDate:self.createdAt]);
     }
     
     return self;

@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSDate *createdAt;
+@property (nonatomic, strong) NSString *formattedDate;
 @property (nonatomic, strong) User *user;
 
 -(id) initWithDictionary: (NSDictionary *)dictionary;

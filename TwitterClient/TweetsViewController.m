@@ -7,6 +7,7 @@
 //
 
 #import "TweetsViewController.h"
+#import "TweetDetailViewController.h"
 #import "User.h"
 #import "TwitterClient.h"
 #import "Tweet.h"
@@ -128,6 +129,12 @@
     NSLog([NSString stringWithFormat:@"%ld", indexPath.row]);
     cell.tweet = self.tweets[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    Tweet *tweet = self.tweets[indexPath.row];
+    TweetDetailViewController *tvc = [[TweetDetailViewController alloc] initWithTweet:tweet];
+    [self.navigationController pushViewController:tvc animated:YES];
 }
 
 @end

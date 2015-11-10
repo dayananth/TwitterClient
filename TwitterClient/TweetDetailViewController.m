@@ -38,6 +38,16 @@
     }];
 }
 
+- (IBAction)onFavourite:(id)sender {
+    [[TwitterClient sharedInstance] favourite:self.tweet.twetID completion:^(Tweet *tweet, NSError *error) {
+        if(tweet != nil){
+            NSLog(@"successfully favourited");
+        }else{
+            NSLog(@"failed to favourite");
+        }
+    }];
+}
+
 
 - (IBAction)onReply:(id)sender {
 

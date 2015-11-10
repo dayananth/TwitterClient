@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
+
+@class MessageComposeController;
+
+@protocol MessageComposeControllerDelegate <NSObject>
+
+-(void) MessageComposeController: (MessageComposeController *) MessageComposeController didPostMessage:(Tweet*) tweet;
+
+@end
 
 @interface MessageComposeController : UIViewController
-
+@property (nonatomic, weak) id<MessageComposeControllerDelegate> delegate;
 @end

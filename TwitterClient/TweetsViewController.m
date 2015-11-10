@@ -14,7 +14,7 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 
-@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate, MessageComposeControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *TweetTableView;
 @property (strong, nonatomic) NSMutableArray *tweets;
@@ -128,6 +128,7 @@
         UIButton *button = (UIButton*)sender;
 //        button.userInteractionEnabled = NO;
         MessageComposeController *mcc = [[MessageComposeController alloc] init];
+        mcc.delegate = self;
         [self.navigationController pushViewController:mcc animated:YES];
         self.isComposeShown = true;
     }
@@ -155,6 +156,12 @@
     TweetDetailViewController *tvc = [[TweetDetailViewController alloc] initWithTweet:tweet];
     [self.navigationController pushViewController:tvc animated:YES];
 }
+
+-(void) MessageComposeController: (MessageComposeController *) MessageComposeController didPostMessage:tweet{
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.TweetTableView reloadData];
+}
+
 
 
 

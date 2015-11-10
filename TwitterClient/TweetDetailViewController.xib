@@ -99,12 +99,18 @@
             </constraints>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="iwk-qS-TBu" appends="YES" id="w9z-ls-VAf"/>
+                <outletCollection property="gestureRecognizers" destination="dNE-g7-hS2" appends="YES" id="imH-Pd-Fwv"/>
             </connections>
             <point key="canvasLocation" x="241" y="202"/>
         </view>
         <tapGestureRecognizer id="iwk-qS-TBu">
             <connections>
                 <action selector="onRetweet:" destination="-1" id="Kle-Kz-arz"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="dNE-g7-hS2">
+            <connections>
+                <action selector="onFavourite:" destination="-1" id="ZhZ-8i-YHs"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

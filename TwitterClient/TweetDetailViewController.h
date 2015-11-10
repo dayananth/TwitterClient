@@ -15,4 +15,5 @@
 -(id) initWithTweet: (Tweet *) tweet;
 
 - (IBAction)onRetweet:(id)sender;
+- (IBAction)onFavourite:(id)sender;
 @end

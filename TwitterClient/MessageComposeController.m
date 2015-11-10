@@ -54,29 +54,6 @@
     [self.navigationController.navigationBar
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationController.navigationBar.translucent = NO;
-//    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:80.0/255.0 green: 80.0/255.0 blue:180.0/255.0 alpha: 1.0]];
-//    [self.navigationController.navigationBar
-//     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-//    [self.navigationController.navigationBar setTranslucent:NO];
-//    [self.navigationController.navigationBar
-//     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-//    
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = CGRectMake(10, 0, 100, 30);
-//    button.layer.cornerRadius = 15.0;
-//    button.layer.borderColor = [UIColor whiteColor].CGColor;
-//    button.layer.borderWidth = 1.0f;
-//    [button setTitle:@"Cancel" forState:UIControlStateNormal];
-//    [button addTarget:self action:@selector(onCancel) forControlEvents:UIControlEventAllEvents];
-//    
-//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-//    [leftButton setTitleTextAttributes:
-//     [NSDictionary dictionaryWithObjectsAndKeys:
-//      [UIColor whiteColor], NSForegroundColorAttributeName,nil]
-//                              forState:UIControlStateNormal];
-//    
-//    self.navigationItem.leftBarButtonItem = leftButton;
-//
     
     UIButton *rbutton = [UIButton buttonWithType:UIButtonTypeCustom];
     rbutton.frame = CGRectMake(10, 0, 100, 30);
@@ -132,6 +109,7 @@
         [[TwitterClient sharedInstance] sendTweet:dictionary completion:^(Tweet *tweet, NSError *error) {
         if (tweet !=nil) {
             NSLog(@"successfully posted");
+            [self.delegate MessageComposeController:self didPostMessage:tweet];
             [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
             
         }else{

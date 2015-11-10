@@ -19,6 +19,7 @@
 @property (strong, nonatomic) User *user;
 @property BOOL isMessagePosted;
 
+@property (weak, nonatomic) IBOutlet UILabel *coutnerLabel;
 @end
 
 @implementation MessageComposeController
@@ -71,6 +72,10 @@
     
     self.navigationItem.rightBarButtonItem = rightButton;
     [self.messageTextField becomeFirstResponder];
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self
+                                   selector:@selector(countText)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
 -(void) setUserInfo{
@@ -120,6 +125,11 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
         self.isMessagePosted = true;
     }
+}
+
+-(void) countText{
+    self.coutnerLabel.text = [NSString stringWithFormat:@"%i",
+                       140-self.messageTextField.text.length];
 }
 
 @end

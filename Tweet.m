@@ -22,8 +22,9 @@
         self.createdAt = [dateFormatter dateFromString:dictionary[@"created_at"]];
         dateFormatter.dateFormat = @"yyyy-MM-dd hh:mm a";
         self.formattedDate = [dateFormatter stringFromDate:self.createdAt];
-//        NSDate *date1 = [NSDate date];
-//        NSLog(@"%@f is the time difference ", [date1 timeIntervalSinceDate:self.createdAt]);
+        self.noOfReTweets =  dictionary[@"retweet_count"];
+        self.noOfLikes =  dictionary[@"favorite_count"];
+        
     }
     
     return self;

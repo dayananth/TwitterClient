@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageComposeController">
             <connections>
+                <outlet property="coutnerLabel" destination="RGR-Z2-rsS" id="BwC-MZ-d1t"/>
                 <outlet property="messageTextField" destination="GU5-dF-HFj" id="IEM-UD-tpu"/>
                 <outlet property="profileImageView" destination="ePS-XA-jQv" id="DGe-vi-Kmg"/>
                 <outlet property="userNameLabel" destination="miZ-8n-FaM" id="hHQ-HH-qoS"/>
@@ -34,6 +35,13 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="counter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGR-Z2-rsS">
+                    <rect key="frame" x="127" y="58" width="59" height="21"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miZ-8n-FaM">
                     <rect key="frame" x="126" y="30" width="181" height="20.5"/>
                     <animations/>
@@ -46,9 +54,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="GU5-dF-HFj" secondAttribute="trailing" constant="13" id="2Pi-Sl-cQS"/>
+                <constraint firstItem="GU5-dF-HFj" firstAttribute="top" secondItem="RGR-Z2-rsS" secondAttribute="bottom" constant="23" id="9m2-Fv-yA0"/>
+                <constraint firstItem="RGR-Z2-rsS" firstAttribute="top" secondItem="miZ-8n-FaM" secondAttribute="bottom" constant="7.5" id="Dqu-3O-Tes"/>
                 <constraint firstItem="miZ-8n-FaM" firstAttribute="leading" secondItem="ePS-XA-jQv" secondAttribute="trailing" constant="28" id="Go9-Ap-MuX"/>
                 <constraint firstItem="GU5-dF-HFj" firstAttribute="top" secondItem="ePS-XA-jQv" secondAttribute="bottom" constant="8" id="TBV-GM-efv"/>
+                <constraint firstAttribute="trailing" secondItem="RGR-Z2-rsS" secondAttribute="trailing" constant="134" id="aaz-RV-KO1"/>
                 <constraint firstItem="ePS-XA-jQv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="f4l-PK-rg3"/>
+                <constraint firstItem="RGR-Z2-rsS" firstAttribute="leading" secondItem="ePS-XA-jQv" secondAttribute="trailing" constant="29" id="o1m-lM-gSI"/>
                 <constraint firstItem="miZ-8n-FaM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="r1G-Ux-oPX"/>
                 <constraint firstItem="ePS-XA-jQv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="rIl-qA-Uns"/>
                 <constraint firstAttribute="trailing" secondItem="miZ-8n-FaM" secondAttribute="trailing" constant="13" id="tjz-NU-XXj"/>

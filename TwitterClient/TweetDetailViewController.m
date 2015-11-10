@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tweetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeStampLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noOfTweetsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noOfLikeLabel;
 @end
 
 @implementation TweetDetailViewController
@@ -83,6 +85,8 @@
     self.userNameLabel.text = self.tweet.user.name;
     self.timeStampLabel.text = self.tweet.formattedDate;
     self.tweetLabel.text = self.tweet.text;
+    self.noOfLikeLabel.text = [NSString stringWithFormat:@"%ld likes",self.tweet.noOfLikes];
+    self.noOfTweetsLabel.text = [NSString stringWithFormat:@"%ld  retweets",self.tweet.noOfReTweets];
 //    [self.tweetLabel sizeToFit];
     
 }

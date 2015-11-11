@@ -9,11 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 
+@class TweetDetailViewController;
+
+@protocol TweetDetailViewControllerDelegate <NSObject>
+
+-(void) TweetDetailViewController: (TweetDetailViewController *) TweetDetailViewController didReply:(Tweet*) tweet;
+
+@end
+
 @interface TweetDetailViewController : UIViewController
 @property (nonatomic, strong) Tweet *tweet;
+@property (nonatomic, weak) id<TweetDetailViewControllerDelegate> delegate;
 
 -(id) initWithTweet: (Tweet *) tweet;
 
 - (IBAction)onRetweet:(id)sender;
 - (IBAction)onFavourite:(id)sender;
+- (IBAction)onReply:(id)sender;
 @end

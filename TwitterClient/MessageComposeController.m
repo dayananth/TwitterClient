@@ -79,7 +79,11 @@
 }
 
 -(void) setUserInfo{
-    self.user = [User currentUser];
+    if(self.inReplyToTweet){
+        self.user = self.inReplyToTweet.user;
+    }else{
+        self.user = [User currentUser];
+    }
     self.isMessagePosted = false;
     NSURL *url = [NSURL URLWithString:self.user.profileImageUrl];
     NSURLRequest *urlReq = [NSURLRequest requestWithURL:url];
@@ -111,6 +115,9 @@
     if(!self.isMessagePosted){
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         dictionary[@"status"] = self.messageTextField.text;
+        if(self.inReplyToTweet){
+            dictionary[@"in_reply_to_status_id"] = [NSNumber numberWithLong:self.inReplyToTweet.twetID];
+        }
         [[TwitterClient sharedInstance] sendTweet:dictionary completion:^(Tweet *tweet, NSError *error) {
         if (tweet !=nil) {
             NSLog(@"successfully posted");

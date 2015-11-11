@@ -19,4 +19,5 @@
 
 @interface MessageComposeController : UIViewController
 @property (nonatomic, weak) id<MessageComposeControllerDelegate> delegate;
+@property (strong, nonatomic) Tweet *inReplyToTweet;
 @end

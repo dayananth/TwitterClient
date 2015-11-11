@@ -100,6 +100,7 @@
             <connections>
                 <outletCollection property="gestureRecognizers" destination="iwk-qS-TBu" appends="YES" id="w9z-ls-VAf"/>
                 <outletCollection property="gestureRecognizers" destination="dNE-g7-hS2" appends="YES" id="imH-Pd-Fwv"/>
+                <outletCollection property="gestureRecognizers" destination="NtW-dY-MxO" appends="YES" id="O29-Rt-41c"/>
             </connections>
             <point key="canvasLocation" x="241" y="202"/>
         </view>
@@ -111,6 +112,11 @@
         <tapGestureRecognizer id="dNE-g7-hS2">
             <connections>
                 <action selector="onFavourite:" destination="-1" id="ZhZ-8i-YHs"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="NtW-dY-MxO">
+            <connections>
+                <action selector="onReply:" destination="-1" id="zwO-fT-Lb1"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

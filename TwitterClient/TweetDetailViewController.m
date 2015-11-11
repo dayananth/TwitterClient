@@ -8,9 +8,10 @@
 
 #import "TweetDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "MessageComposeController.h"
 #import "TwitterClient.h"
 
-@interface TweetDetailViewController ()
+@interface TweetDetailViewController () <MessageComposeControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -50,9 +51,11 @@
     }];
 }
 
-
 - (IBAction)onReply:(id)sender {
-
+    MessageComposeController *mcc = [[MessageComposeController alloc] init];
+    mcc.delegate = self;
+    mcc.inReplyToTweet = self.tweet;
+    [self.navigationController pushViewController:mcc animated:YES];
 }
 
 //- (IBAction)onRetweet:(id)sender {
@@ -105,6 +108,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void) MessageComposeController: (MessageComposeController *) MessageComposeController didPostMessage:tweet{
+    [self.delegate TweetDetailViewController:self didReply:tweet];
+    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+}
 
 
 @end

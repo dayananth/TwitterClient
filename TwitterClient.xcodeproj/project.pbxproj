@@ -77,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				0CF46FB21BEC8867007B0527 /* Models */,
-				0CF46F5C1BEB2B8C007B0527 /* TwitterClient */,
 				0CF46F5B1BEB2B8C007B0527 /* Products */,
 				26D847BE6C381A5C55F89501 /* Pods */,
 				7F39CC76C7D9CF21EB497BCF /* Frameworks */,
@@ -151,6 +150,7 @@
 				0CF46FB41BEC8881007B0527 /* Tweet.m */,
 				0CF46FB61BEC8899007B0527 /* User.h */,
 				0CF46FB71BEC8899007B0527 /* User.m */,
+				0CF46F5C1BEB2B8C007B0527 /* TwitterClient */,
 			);
 			name = Models;
 			sourceTree = "<group>";

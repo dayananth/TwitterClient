@@ -23,7 +23,8 @@
 
 -(id) initWithTweet: (Tweet *) tweet;
 
-- (IBAction)onRetweet:(id)sender;
-- (IBAction)onFavourite:(id)sender;
 - (IBAction)onReply:(id)sender;
+- (IBAction)onRetweet:(id)sender;
+- (IBAction)onLike:(id)sender;
+
 @end

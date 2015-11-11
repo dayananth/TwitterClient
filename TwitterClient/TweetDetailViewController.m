@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noOfTweetsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noOfLikeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *meesageLabel;
 @end
 
 @implementation TweetDetailViewController
@@ -31,20 +32,22 @@
     return self;
 }
 
+
+
 - (IBAction)onRetweet:(id)sender {
     [[TwitterClient sharedInstance] retweet:self.tweet.twetID completion:^(Tweet *tweet, NSError *error) {
         if(tweet != nil){
-            NSLog(@"successfully retweeted");
+           self.meesageLabel.text=@"Retweeted";
         }else{
             NSLog(@"failed to retweet");
         }
     }];
 }
 
-- (IBAction)onFavourite:(id)sender {
+- (IBAction)onLike:(id)sender {
     [[TwitterClient sharedInstance] favourite:self.tweet.twetID completion:^(Tweet *tweet, NSError *error) {
         if(tweet != nil){
-            NSLog(@"successfully favourited");
+            self.meesageLabel.text=@"favorited";
         }else{
             NSLog(@"failed to favourite");
         }
@@ -92,6 +95,11 @@
     self.noOfTweetsLabel.text = [NSString stringWithFormat:@"%ld  retweets",self.tweet.noOfReTweets];
 //    [self.tweetLabel sizeToFit];
     
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self
+                                   selector:@selector(clearText)
+                                   userInfo:nil
+                                    repeats:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,5 +122,9 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
 }
 
+
+-(void) clearText{
+    self.meesageLabel.text = @"";
+}
 
 @end

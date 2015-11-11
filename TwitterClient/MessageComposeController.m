@@ -116,7 +116,8 @@
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         dictionary[@"status"] = self.messageTextField.text;
         if(self.inReplyToTweet){
-            dictionary[@"in_reply_to_status_id"] = [NSNumber numberWithLong:self.inReplyToTweet.twetID];
+            dictionary[@"in_reply_to_status_id"] = self.inReplyToTweet.twetID;
+            dictionary[@"status"] = [NSString stringWithFormat:@"@%@ %@",self.inReplyToTweet.user.screenName, self.messageTextField.text];
         }
         [[TwitterClient sharedInstance] sendTweet:dictionary completion:^(Tweet *tweet, NSError *error) {
         if (tweet !=nil) {

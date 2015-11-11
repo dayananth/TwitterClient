@@ -22,7 +22,7 @@
 
 -(void) sendTweet: (NSDictionary *) params completion:(void (^) (Tweet *tweet, NSError *error)) completion;
 
--(void) retweet: (long) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion;
+-(void) retweet: (NSNumber *) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion;
 
--(void) favourite: (long) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion;
+-(void) favourite: (NSNumber *) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion;
 @end

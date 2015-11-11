@@ -104,13 +104,13 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
--(void) retweet: (long) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion {
+-(void) retweet: (NSNumber *) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion {
     NSString *tweetIDString = [NSString stringWithFormat:@"%ld.json",tweetID];
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    dictionary[@"id"] = tweetIDString;
+//    dictionary[@"id"] =
     
     
-    [self POST:[NSString stringWithFormat:@"1.1/statuses/retweet/%ld.json",tweetID] parameters:dictionary constructingBodyWithBlock:NULL success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    [self POST:[NSString stringWithFormat:@"1.1/statuses/retweet/%ld.json",[tweetID longValue]] parameters:dictionary constructingBodyWithBlock:NULL success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
         completion(tweet, nil);
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
@@ -118,10 +118,10 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
--(void) favourite: (long) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion {
+-(void) favourite: (NSNumber *) tweetID completion:(void (^) (Tweet *tweet, NSError *error)) completion {
     NSString *tweetIDString = [NSString stringWithFormat:@"%ld.json",tweetID];
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    dictionary[@"id"] = [NSNumber numberWithLong:tweetID];
+    dictionary[@"id"] = tweetID;
 
     [self POST:@"1.1/favorites/create.json" parameters:dictionary constructingBodyWithBlock:NULL success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
